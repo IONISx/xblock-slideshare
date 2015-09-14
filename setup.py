@@ -32,8 +32,8 @@ setup(
     ],
     entry_points={
         'xblock.v1': [
-            'slideshare = slideshare.xblock:SlideshareXBlock',
+            'slideshare = slideshare.slidesharexblock:SlideshareXBlock',
         ]
     },
-    package_data=package_data("personalitytest", ["static", "public"]),
+    package_data=package_data("slideshare", ["static", "public"]),
 )
