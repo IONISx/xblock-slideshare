@@ -1,4 +1,4 @@
-# xblock-personality-test [![Build Status](https://circleci.com/gh/IONISx/xblock-slideshare.svg?style=svg)](https://circleci.com/gh/IONISx/xblock-slideshare)
+# xblock-slideshare [![Build Status](https://circleci.com/gh/IONISx/xblock-slideshare.svg?style=svg)](https://circleci.com/gh/IONISx/xblock-slideshare)
 
 [![Dependencies status](https://david-dm.org/IONISx/xblock-slideshare.svg)](https://david-dm.org/IONISx/xblock-slideshare)
 [![Dev dependencies status](https://david-dm.org/IONISx/xblock-slideshare/dev-status.svg)](https://david-dm.org/IONISx/xblock-slideshare#info=devDependencies)
@@ -6,7 +6,7 @@
 
 > Course component (Open edX XBlock) to embed a Slideshare presentation
 
-## Development environment
+## Testing
 
 For the code quality environment, you need to install both Python and JavaScript requirements.
 
