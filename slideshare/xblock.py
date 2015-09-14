@@ -16,7 +16,7 @@ import string
 from xblock.studio_editable import StudioEditableXBlockMixin
 
 from xblock.core import XBlock
-from xblock.fields import Scope, Integer, String
+from xblock.fields import Scope, String
 from xblock.fragment import Fragment
 
 class SlideshareXBlock(StudioEditableXBlockMixin, XBlock):
