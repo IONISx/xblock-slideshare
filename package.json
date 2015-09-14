@@ -1,0 +1,24 @@
+{
+  "name": "xblock-slideshare",
+  "description": "Course component (Open edX XBlock) to embed a Slideshare presentation",
+  "private": true,
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-contrib-jshint": "0.11.3",
+    "grunt-flake8": "0.1.3",
+    "grunt-jscs": "2.1.0",
+    "load-grunt-tasks": "3.2.0",
+    "time-grunt": "1.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IONISx/xblock-slideshare.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IONISx/xblock-slideshare/issues"
+  },
+  "homepage": "https://github.com/IONISx/xblock-slideshare#readme"
+}
