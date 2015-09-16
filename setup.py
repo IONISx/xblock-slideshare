@@ -29,10 +29,11 @@ setup(
     ],
     install_requires=[
         'XBlock',
+        'xblock-utils',
     ],
     entry_points={
         'xblock.v1': [
-            'slideshare = slideshare.xblock:SlideshareXBlock',
+            'slideshare = slideshare.slideshare:SlideshareXBlock',
         ]
     },
     package_data=package_data("slideshare", ["static", "public"]),

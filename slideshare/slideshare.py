@@ -7,23 +7,23 @@ Makes use of the SlideShare oEmbed entry points to look up the embed code and th
 inserts it within the XBlock.
 
 """
+
 import cgi
-import decimal
 import pkg_resources
 import requests
-import string
-
-from xblockutils.studio_editable import StudioEditableXBlockMixin
 
 from xblock.core import XBlock
 from xblock.fields import Scope, String
 from xblock.fragment import Fragment
+from xblockutils.publish_event import PublishEventMixin
+from xblockutils.studio_editable import StudioEditableXBlockMixin
 
 
-class SlideshareXBlock(StudioEditableXBlockMixin, XBlock):
+class SlideshareXBlock(XBlock, StudioEditableXBlockMixin, PublishEventMixin):
     """
     An XBlock providing SlideShare embedding capabilities
     """
+
     # Stored values for the XBlock
     href = String(
         display_name="SlideShare Embed URL",
@@ -63,19 +63,8 @@ class SlideshareXBlock(StudioEditableXBlockMixin, XBlock):
             frag = Fragment(html_str.format(self=self, exception=cgi.escape(str(ex))))
             return frag
 
-        # Grab and round the aspect ratio
-        ratio = decimal.Decimal(float(height) / width * 100.0)
-
         # Construct the HTML
-        frag = Fragment(html_str.format(
-            self=self,
-            embed_code=embed_code,
-            display_name=cgi.escape(display_name)))
-
-        # And construct the CSS
-        css_str = self.resource_string("static/css/officemix.css")
-        css_str = string.replace(unicode(css_str), "{aspect_ratio}", cgi.escape(unicode(round(ratio, 2))))
-        frag.add_css(css_str)
+        frag = Fragment(html_str.format(self=self, embed_code=embed_code, display_name=cgi.escape(display_name)))
 
         return frag
 
@@ -88,7 +77,7 @@ class SlideshareXBlock(StudioEditableXBlockMixin, XBlock):
 
     def get_embed_code(self, url):
         """
-        Makes an oEmbed call out to Office Mix to retrieve the embed code and width and height of the mix
+        Makes an oEmbed call out to Slideshare to retrieve the embed code and width and height of the mix
         for the given url.
         """
 
