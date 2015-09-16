@@ -13,17 +13,17 @@ import pkg_resources
 import requests
 import string
 
-from xblock.studio_editable import StudioEditableXBlockMixin
+from xblockutils.studio_editable import StudioEditableXBlockMixin
 
 from xblock.core import XBlock
 from xblock.fields import Scope, String
 from xblock.fragment import Fragment
 
+
 class SlideshareXBlock(StudioEditableXBlockMixin, XBlock):
     """
     An XBlock providing SlideShare embedding capabilities
     """
-
     # Stored values for the XBlock
     href = String(
         display_name="SlideShare Embed URL",
@@ -43,7 +43,6 @@ class SlideshareXBlock(StudioEditableXBlockMixin, XBlock):
         """Handy helper for getting resources from our kit."""
         data = pkg_resources.resource_string(__name__, path)
         return data.decode("utf8")
-
 
     def student_view(self, context=None):
         """
@@ -93,9 +92,9 @@ class SlideshareXBlock(StudioEditableXBlockMixin, XBlock):
         for the given url.
         """
 
-        parameters = { 'url': url }
+        parameters = {'url': url}
 
-        oEmbedRequest = requests.get("http://www.slideshare.net/api/oembed/2/", params = parameters)
+        oEmbedRequest = requests.get("http://www.slideshare.net/api/oembed/2/", params=parameters)
         oEmbedRequest.raise_for_status()
         responseJson = oEmbedRequest.json()
 
