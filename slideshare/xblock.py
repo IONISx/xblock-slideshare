@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 """
 
 XBlock for SlideShare
@@ -15,6 +16,7 @@ import requests
 from xblock.core import XBlock
 from xblock.fields import Scope, String
 from xblock.fragment import Fragment
+
 from xblockutils.publish_event import PublishEventMixin
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 
@@ -61,19 +63,21 @@ class SlideshareXBlock(XBlock, StudioEditableXBlockMixin, PublishEventMixin):
         except Exception as ex:
             html_str = self.resource_string("static/html/embed_error.html")
             frag = Fragment(html_str.format(self=self, exception=cgi.escape(str(ex))))
+
+            # Construct the JavaScript
+            frag.add_javascript(self.resource_string("/static/js/src/slideshare_error.js"))
+            frag.initialize_js('SlideshareXBlock')
+
             return frag
 
         # Construct the HTML
         frag = Fragment(html_str.format(self=self, embed_code=embed_code, display_name=cgi.escape(display_name)))
 
+        # Construct the JavaScript
+        frag.add_javascript(self.resource_string("/static/js/src/slideshare_view.js"))
+        frag.initialize_js('SlideshareXBlock')
+
         return frag
-
-    @XBlock.json_handler
-    def studio_submit(self, data, suffic=''):
-        self.href = data.get('href')
-        self.display_name = data.get('display_name')
-
-        return {'result': 'success'}
 
     def get_embed_code(self, url):
         """

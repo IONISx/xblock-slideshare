@@ -33,7 +33,7 @@ setup(
     ],
     entry_points={
         'xblock.v1': [
-            'slideshare = slideshare.slideshare:SlideshareXBlock',
+            'slideshare = slideshare.xblock:SlideshareXBlock',
         ]
     },
     package_data=package_data("slideshare", ["static", "public"]),
