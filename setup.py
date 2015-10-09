@@ -29,11 +29,12 @@ setup(
     ],
     install_requires=[
         'XBlock',
+        'xblock-utils',
     ],
     entry_points={
         'xblock.v1': [
             'slideshare = slideshare.xblock:SlideshareXBlock',
         ]
     },
-    package_data=package_data("personalitytest", ["static", "public"]),
+    package_data=package_data("slideshare", ["static", "public"]),
 )

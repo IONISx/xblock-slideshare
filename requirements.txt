@@ -1,1 +1,5 @@
 flake8==2.4.1
+requests
+
+-e .
+-e git+https://github.com/edx/xblock-utils.git#egg=xblock-utils

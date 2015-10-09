@@ -5,11 +5,13 @@
     "noarg": true,
     "undef": true,
     "unused": true,
-
+    "exported": [
+        "SlideshareXBlock"
+    ],
     "eqnull": true,
     "node": true,
+    "browser": true,
+    "jquery": true,
 
-    "sub": true,
-
-    "predef": ["-Promise"]
+    "sub": true
 }
